@@ -1,0 +1,23 @@
+mat-sidenav-container {
+    height: 100%;
+}
+
+mat-sidenav-content {
+    padding: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    opacity: 0.5;
+}
+
+mat-sidenav {
+    display: inline-block;
+    width: 200px;
+}
+
+::ng-deep .mat-sidenav-container{
+    height:100vh !important; /* or 100% */
+  }
