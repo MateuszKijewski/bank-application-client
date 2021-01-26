@@ -1,0 +1,20 @@
+.view-container {
+    height: 100%;
+    width: 100%;
+    background-image: url("../../../images/banking-theme.jpg");
+}
+
+.form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    z-index: 2;
+    width: 20%;
+    padding: 20px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}

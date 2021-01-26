@@ -4,3 +4,7 @@ mat-icon {
 .spacer {
     flex: 1 1 auto;
 }
+
+mat-toolbar {
+    background-image: url("../../../images/banking-theme.jpg")
+}
