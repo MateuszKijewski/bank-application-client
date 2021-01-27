@@ -1,5 +1,6 @@
+import { TypeofExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Gender } from '../../../models/Gender';
+import { Gender } from '../../../models/gender-enum';
 
 @Component({
   selector: 'app-register-form',
@@ -8,7 +9,7 @@ import { Gender } from '../../../models/Gender';
 })
 export class RegisterFormComponent implements OnInit {
 
-  genders: any = Gender;
+  genders: typeof Gender  = Gender;
 
   constructor() { }
 

@@ -1,6 +1,9 @@
 <div class="view-container">
     <div class="form-container">
-        <app-login-form></app-login-form>
-        <app-register-form></app-register-form>
+        <div [ngSwitch]="(currentModal | async)!.currentModal.type">            
+            <app-login-form *ngSwitchCase="modalType.LOGIN_MODAL"></app-login-form>
+            <app-register-form *ngSwitchCase="modalType.REGISTER_MODAL"></app-register-form>
+            <button (click)="switchModal(modalType.REGISTER_MODAL)">TEST</button>
+        </div>
     </div>
 </div>

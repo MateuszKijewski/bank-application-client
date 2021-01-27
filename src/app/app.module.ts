@@ -12,6 +12,10 @@ import { AppViewComponent } from './components/main/app-view/app-view.component'
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { RegisterFormComponent } from './components/forms/register-form/register-form.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './ngrx/reducers/app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,12 @@ import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    StoreModule.forRoot(appReducer, {}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
