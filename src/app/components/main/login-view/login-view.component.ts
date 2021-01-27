@@ -5,7 +5,7 @@ import { Modal } from '../../../models/modal-model'
 import { ModalState } from '../../../ngrx/state/modal.state'
 import { ModalType } from '../../../models/modalType-enum'
 import { Store } from '@ngrx/store';
-import { ModalActions, SwitchModals } from '../../../ngrx/actions/modal.actions';
+import { SwitchModals } from '../../../ngrx/actions/modal.actions';
 
 @Component({
   selector: 'app-login-view',
