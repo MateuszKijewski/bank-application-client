@@ -60,25 +60,25 @@ export class AuthService {
         if (tokenJson !== null) {
             let token = tokenJson;            
             const url = `${this.baseLocalUrl}/auth/me`;
-            await this.http.get(url, {
+            let response = await this.http.get(url, {
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${token} `
                 }),
                 observe: 'response'
-            }).subscribe(response => {
-                if (response.status === 200) {
-                    let user = <User>response.body;
-                    this.store.dispatch(new SetUserInfo({
-                        userInfo: user
+            }).toPromise();
+            
+            if (response.status === 200) {
+                let user = <User>response.body;
+                this.store.dispatch(new SetUserInfo({
+                    userInfo: user
                     }))
                     return true;
-                }
-                else {
-                    return false;
-                }
-            })
+                }            
+            else {
+                return false;
+            }
         }
         return false;
     }

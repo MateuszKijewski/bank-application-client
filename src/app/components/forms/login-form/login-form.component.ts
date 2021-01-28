@@ -3,11 +3,6 @@ import { EventEmitter } from '@angular/core';
 import { LoginResponseDto } from 'src/app/models/DTOs/Auth/login-response-dto';
 import { ModalType } from 'src/app/models/modalType-enum';
 import { AuthService } from '../../../services/auth.service';
-import { Store } from '@ngrx/store';
-import { Authorize } from '../../../ngrx/actions/user.actions';
-import { AppState } from '../../../ngrx/state/app.state';
-import { User } from '../../../models/user-model';
-import { SetUserInfo } from '../../../ngrx/actions/user.actions';
 import { Router } from '@angular/router'
 
 @Component({
