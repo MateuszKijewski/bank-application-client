@@ -6,6 +6,10 @@ import { AuthService } from '../../../services/auth.service';
 import { Store } from '@ngrx/store';
 import { Authorize } from '../../../ngrx/actions/user.actions';
 import { AppState } from '../../../ngrx/state/app.state';
+import { User } from '../../../models/user-model';
+import { SetUserInfo } from '../../../ngrx/actions/user.actions';
+import { Router } from '@angular/router'
+import { routes } from '../../../app-routing.module'
 
 @Component({
   selector: 'app-login-form',
@@ -18,7 +22,10 @@ export class LoginFormComponent implements OnInit {
   loginPassword: string;
 
   modalType = ModalType;
-  constructor(private authService: AuthService, private store: Store<AppState>) { }
+  constructor(
+    private authService: AuthService,
+    private store: Store<AppState>,
+    private router: Router ) { }
 
   ngOnInit(): void {
   }
@@ -33,14 +40,31 @@ export class LoginFormComponent implements OnInit {
       password: this.loginPassword
     }).subscribe((response: LoginResponseDto) => {
       console.log(response.message);
-      this.authorizeUser(response.access_token);
-    })
+      if (response.access_token) {
+        this.authorizeUser(response.access_token);
+        this.navigateToDashboard();
+        this.authService.getUserInfo(response.access_token).subscribe((response: User) => {
+          console.log(`Retrieved info about user: ${response.first_name} ${response.last_name}`);
+          this.fillUserInfo(response);
+        })
+      }
+    });
   }
 
   authorizeUser(jwtToken: string) {
     this.store.dispatch(new Authorize({
       jwtToken: jwtToken
     }))
+  }
+
+  fillUserInfo(user: User) {
+    this.store.dispatch(new SetUserInfo({
+        userInfo: user
+    }))
+  }
+
+  navigateToDashboard(){
+    this.router.navigate(['/'])
   }
 
 }

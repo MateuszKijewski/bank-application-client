@@ -13,15 +13,8 @@ export const initialUserState : UserState = {
         phone: '',
         email: '',
         addressId: null,
-        address: {
-            id: null,
-            city: '',
-            post_code: '',
-            street_and_number: '',
-            country: '',
-            created_at: null,
-            updated_at: null,
-        },
-        token: ''
+        address: null,
+        token: '',
+        accounts: []
     }
 }
