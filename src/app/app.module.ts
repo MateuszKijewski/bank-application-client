@@ -18,6 +18,9 @@ import { appReducer } from './ngrx/reducers/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { AccountViewComponent } from './components/content/account/account-view/account-view.component';
+import { AccountListComponent } from './components/content/account/account-list/account-list.component';
+import { DashboardComponent } from './components/content/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppViewComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    EnumToArrayPipe
+    EnumToArrayPipe,
+    AccountViewComponent,
+    AccountListComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

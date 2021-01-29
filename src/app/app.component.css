@@ -1,3 +1,7 @@
 .app-side-menu {
     height: 100%;
 }
+
+.notVisible {
+    display: none;
+}
