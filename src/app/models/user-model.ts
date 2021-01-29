@@ -1,4 +1,5 @@
 import { Address } from "./address.model";
+import { Account } from "./account.model";
 
 export interface User {
     id: number | null,

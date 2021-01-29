@@ -1,1 +1,19 @@
-<p>account-form works!</p>
+    <form (ngSubmit)="onSubmit()">
+        <div class="dialog-content">
+            <h2>New account</h2>
+                <mat-form-field appearance="outline">
+                    <mat-label>Account name</mat-label>
+                    <input matInput name="email" type="account_name" required [(ngModel)]="formAccountName">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Bank</mat-label>
+                    <mat-select name="bank" name="bank" [(ngModel)]="formBankId">
+                        <mat-option *ngFor="let bank of banks" [value]="bank.id">
+                            {{ bank.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            <button mat-button>SUBMIT</button>
+            <button mat-button [mat-dialog-close]>CANCEL</button>
+        </div>
+    </form>

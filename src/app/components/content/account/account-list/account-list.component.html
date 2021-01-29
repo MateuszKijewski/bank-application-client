@@ -1,0 +1,11 @@
+<mat-toolbar>
+    <span class="title-center">
+        <button mat-button (click)="openDialog()"><span class="button-text">Create new account</span></button>
+    </span>
+</mat-toolbar>
+<mat-divider></mat-divider>
+<mat-grid-list cols="3" rowHeight="2:1" >
+    <mat-grid-tile *ngFor="let account of accounts">
+        <app-account-card [account]="account"></app-account-card>
+    </mat-grid-tile>
+  </mat-grid-list>

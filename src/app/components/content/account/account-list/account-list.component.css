@@ -1,5 +1,7 @@
-.example-card {
-    max-width: 400px;
-    min-height: 400px;;
-  }
-  
+.title-center {
+  margin: 0 auto;
+}
+
+.button-text {
+  font-size: 1.5rem;
+}
