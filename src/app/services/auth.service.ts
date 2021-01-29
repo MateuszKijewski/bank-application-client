@@ -26,15 +26,14 @@ export class AuthService {
     localStorage = localStorage;
     constructor(private http:HttpClient, private store: Store<AppState>) { }
 
-    getAuthorizedHttpOptions(jwtToken: string): Object {
-        return {
-            headers: new HttpHeaders({
+    getAuthorizedHttpHeaders(): HttpHeaders {
+        let jwtToken = this.getTokenFromStorage();
+        return new HttpHeaders  ({
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${jwtToken} `
-            }),
-            observe: 'response'
-        }
+            })
+        
     }
 
     login(loginDto: LoginDto): Observable<LoginResponseDto> {
@@ -55,17 +54,16 @@ export class AuthService {
         this.localStorage.setItem('token', jwtToken)
     }
 
+    getTokenFromStorage(): string | null {
+        return this.localStorage.getItem('token');
+    }
+
     async checkIfAuthorized() { 
-        let tokenJson = this.localStorage.getItem('token');
-        if (tokenJson !== null) {
-            let token = tokenJson;            
+        let token = this.getTokenFromStorage();
+        if (token !== null) {
             const url = `${this.baseLocalUrl}/auth/me`;
             let response = await this.http.get(url, {
-                headers: new HttpHeaders({
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Authorization': `Bearer ${token} `
-                }),
+                headers: this.getAuthorizedHttpHeaders(),
                 observe: 'response'
             }).toPromise();
             

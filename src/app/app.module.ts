@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AccountViewComponent } from './components/content/account/account-view/account-view.component';
 import { AccountListComponent } from './components/content/account/account-list/account-list.component';
 import { DashboardComponent } from './components/content/dashboard/dashboard.component';
+import { AccountFormComponent } from './components/content/account/account-form/account-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DashboardComponent } from './components/content/dashboard/dashboard.com
     EnumToArrayPipe,
     AccountViewComponent,
     AccountListComponent,
-    DashboardComponent
+    DashboardComponent,
+    AccountFormComponent
   ],
   imports: [
     BrowserModule,
