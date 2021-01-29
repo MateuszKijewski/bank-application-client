@@ -1,0 +1,61 @@
+  <mat-list>
+    <div mat-list-item>
+        <mat-grid-list cols="5" rowHeight="3:1" >
+            <mat-grid-tile>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <span mat-line>Type</span>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <span mat-line>Number</span>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <span mat-line>Expiration date</span>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <span mat-line>Actions</span>
+            </mat-grid-tile>
+          </mat-grid-list>
+      </div>
+      <mat-divider></mat-divider>      
+      <div mat-list-item *ngFor="let creditCard of creditCards">
+        <mat-grid-list cols="5" rowHeight="2:1" >
+            <mat-grid-tile>
+                <mat-icon matListIcon>credit_card</mat-icon>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <span mat-line>{{creditCard.type}}</span>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <span mat-line>{{creditCard.number}}</span>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <span mat-line>{{creditCard.exp_date}}</span>
+            </mat-grid-tile>            
+            <mat-grid-tile>
+                <button mat-button color="warn" (click)="deleteCreditCard(creditCard.id)">delete</button>
+            </mat-grid-tile>
+          </mat-grid-list>
+      </div>
+      <div mat-list-item>
+        <mat-grid-list cols="5" rowHeight="2:1" >
+            <mat-grid-tile>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <form (ngSubmit)="onSubmit()" id="ngForm" #documentEditForm="ngForm">
+                    <mat-form-field appearance="outline" style="width: 100px;">
+                        <input matInput name="type" type="text" required [(ngModel)]="formType">
+                    </mat-form-field>
+                </form>
+            </mat-grid-tile>
+            <mat-grid-tile>
+            </mat-grid-tile>
+            <mat-grid-tile>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button mat-button form="ngForm" [disabled]="!documentEditForm.form.valid">add</button>
+            </mat-grid-tile>
+          </mat-grid-list>
+      </div>
+    </mat-list>
+    <button mat-button [mat-dialog-close]>CANCEL</button>

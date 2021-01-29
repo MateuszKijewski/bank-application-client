@@ -1,0 +1,8 @@
+.card-element {
+    display: inline-block;
+    width: 100%;
+}
+
+.card-elemet > * {
+    margin-left: 10px;
+}

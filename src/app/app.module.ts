@@ -23,6 +23,7 @@ import { AccountListComponent } from './components/content/account/account-list/
 import { DashboardComponent } from './components/content/dashboard/dashboard.component';
 import { AccountFormComponent } from './components/content/account/account-form/account-form.component';
 import { AccountCardComponent } from './components/content/account/account-card/account-card.component';
+import { AccountCreditCardsFormComponent } from './components/content/account/account-credit-cards-form/account-credit-cards-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AccountCardComponent } from './components/content/account/account-card/
     AccountListComponent,
     DashboardComponent,
     AccountFormComponent,
-    AccountCardComponent
+    AccountCardComponent,
+    AccountCreditCardsFormComponent
   ],
   imports: [
     BrowserModule,

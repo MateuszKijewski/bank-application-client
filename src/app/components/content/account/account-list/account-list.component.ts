@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AccountService } from 'src/app/services/account.service';
 import { Account } from '../../../../models/account.model';
 import { AccountFormComponent  } from '../account-form/account-form.component'
@@ -24,10 +24,15 @@ export class AccountListComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(AccountFormComponent, {
       width: '320px',
-      height: '350px'
     });
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
     });
+  }
+
+  deletedAccount(isDeleted: boolean) {
+    if (isDeleted){
+      this.ngOnInit();
+    }
   }
 }
