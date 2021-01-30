@@ -14,7 +14,7 @@ import { TransactionFormComponent } from '../transaction-form/transaction-form.c
 })
 export class TransactionListComponent implements OnInit {
 
-  displayedColumns: string[] = ['title', 'transfer_type', 'amount', 'current_balance', 'from_account', 'to_account'];
+  displayedColumns: string[] = ['title', 'transfer_type', 'amount', 'current_balance', 'from_account', 'to_account', 'to_bank'];
 
   transactions: Transaction[];
   dataSource: MatTableDataSource<Transaction>;
