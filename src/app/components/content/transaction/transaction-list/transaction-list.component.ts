@@ -1,9 +1,11 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
 import { Transaction } from '../../../../models/transaction.model';
 import { TransactionService } from '../../../../services/transaction.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { TransactionFormComponent } from '../transaction-form/transaction-form.component';
 
 @Component({
   selector: 'app-transaction-list',
@@ -21,7 +23,8 @@ export class TransactionListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator 
 
   constructor(
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    public dialog:MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +35,15 @@ export class TransactionListComponent implements OnInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     })
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(TransactionFormComponent, {
+      width: '320px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
   applyFilter(filterTarget: EventTarget | null) {

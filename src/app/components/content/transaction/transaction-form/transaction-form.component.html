@@ -1,0 +1,33 @@
+<form (ngSubmit)="onSubmit()" id="ngForm" #documentEditForm="ngForm">
+    <div class="dialog-content">
+        <h2>New transaction</h2>
+        <mat-form-field appearance="outline">
+            <mat-label>Your account</mat-label>
+            <mat-select name="fromAccount" [(ngModel)]="formFromAccountId">
+                <mat-option *ngFor="let userAccount of currentUserAccountNames" [value]="userAccount.id">
+                    {{ userAccount.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Account number</mat-label>
+            <input matInput name="accountNumber" type="text" required [(ngModel)]="formToAccountName">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Amount</mat-label>
+            <input matInput name="amount" type="number" [(ngModel)]="formAmount">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput name="title" type="text" [(ngModel)]="formTitle">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Transfer date</mat-label>
+            <input matInput [matDatepicker]="picker" name="transferDate" [(ngModel)]="formTransferDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</form>
+<button mat-button form="ngForm" [disabled]="!documentEditForm.form.valid">SUBMIT</button>
+<button mat-button [mat-dialog-close]>CANCEL</button>

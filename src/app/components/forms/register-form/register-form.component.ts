@@ -90,5 +90,6 @@ export class RegisterFormComponent implements OnInit {
     console.log(date);
     let result = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDay()}`;
     console.log(result);
-    return result;}
+    return result;
+  }
 }

@@ -33,6 +33,13 @@ export class AccountService {
         });
     }
 
+    getAllAccounts(): Observable<AllAccountsDto> {
+        const url = `${this.baseLocalUrl}/accounts`;
+        return this.http.get<AllAccountsDto>(url, {
+            headers: this.authService.getAuthorizedHttpHeaders()
+        });
+    }
+
     addAccount(addAccountDto: AddAccountDto): void {
         const url = `${this.baseLocalUrl}/accounts`;
         this.http.post(url, addAccountDto, {
