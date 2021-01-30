@@ -1,0 +1,36 @@
+<mat-toolbar>
+    <span class="title-center">
+        <button mat-button ><span class="button-text">Create new transaction</span></button>
+    </span>
+</mat-toolbar>
+<mat-form-field>
+    <input (keyup)="applyFilter($event.currentTarget)"matInput placeholder="filter">
+</mat-form-field>
+<div class="mat-elevation-z5">
+    <table mat-table matSort [dataSource]="dataSource">
+        <ng-container matColumnDef="title">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Title </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.title}} </td>
+        </ng-container>
+        <ng-container matColumnDef="transfer_type">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Transfer type </th>
+            <td mat-cell *matCellDef="let transaction" [ngClass]="setClasses(transaction.transfer_type)"> {{transaction.transfer_type}} </td>
+        </ng-container>
+        <ng-container matColumnDef="amount">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Amount </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.amount}} {{transaction.currency}} </td>
+        </ng-container>
+        <ng-container matColumnDef="from_account">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Sender account </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.from_account}} </td>
+        </ng-container>
+        <ng-container matColumnDef="to_account">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Receiver account </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.to_account}} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 15, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+</div>

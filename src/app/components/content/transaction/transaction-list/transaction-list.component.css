@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+}
+
+mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.out-transfer {
+    background-color: #ffcfcf;
+}
+
+.in-transfer {
+    background-color: #cfffe8;
+}
+
+.button-text {
+    font-size: 1.5rem;
+}
+
+.title-center {
+    margin: 0 auto;
+  }

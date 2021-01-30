@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Account } from '../models/account.model'
 import { User } from '../models/user-model';
-import { Store } from '@ngrx/store';
 import { AppState } from '../ngrx/state/app.state';
 import { Observable } from 'rxjs'
 import { UserState } from '../ngrx/state/user.state';
@@ -11,6 +10,7 @@ import { AllAccountsDto } from '../models/DTOs/Account/all-accounts-dto';
 import { AddAccountDto } from '../models/DTOs/Account/add-account-dto';
 import { AllCreditCardsDto } from '../models/DTOs/CreditCard/all-credit-cards-dto';
 import { CreditCard } from '../models/credit-card.model';
+import { AllTransactionsDto } from '../models/DTOs/Transaction/all-transactions-dto';
 
 @Injectable({
     providedIn: 'root'
@@ -21,10 +21,11 @@ export class AccountService {
 
     constructor(
         private http:HttpClient,
-        private store: Store<AppState>,
         private authService: AuthService
         ) { }
 
+
+    /* Account operations */
     getLoggedInUserAccounts(): Observable<User> {        
         const url = `${this.baseLocalUrl}/auth/me`;
         return this.http.get<User>(url, {
@@ -62,7 +63,7 @@ export class AccountService {
         })
     }
 
-
+    /* CreditCards operations */
     getAllAccountCreditCards(accountId: number): Observable<AllCreditCardsDto> {
         const url = `${this.baseLocalUrl}/accounts/${accountId}/creditCards`;
         return this.http.get<AllCreditCardsDto>(url, {
@@ -93,5 +94,13 @@ export class AccountService {
                 console.log("ERROR DURING CREDIT CARD DELETION")
             }
         })
+    }
+
+    /* Transaction operations */
+    getAllAccountTransactions(accountId: number): Observable<AllTransactionsDto> {
+        const url = `${this.baseLocalUrl}/accounts/${accountId}/transactions`;
+        return this.http.get<AllTransactionsDto>(url, {
+            headers: this.authService.getAuthorizedHttpHeaders()
+        });
     }
 }
