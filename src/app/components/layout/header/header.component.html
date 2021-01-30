@@ -1,6 +1,8 @@
 <mat-toolbar>
     <span class="spacer"></span>
-    <mat-icon>account_circled</mat-icon>
-    <mat-icon>info</mat-icon>
-    <mat-icon>exit_to_app</mat-icon>
+    <div matRipple>
+        <button mat-button (click)='logOut()'>
+            <mat-icon style="font-size: 1.8rem;">exit_to_app</mat-icon>
+        </button>>
+    </div>
 </mat-toolbar>

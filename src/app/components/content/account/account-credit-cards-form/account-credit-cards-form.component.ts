@@ -24,7 +24,7 @@ export class AccountCreditCardsFormComponent implements OnInit {
   }
 
   deleteCreditCard(creditCardId: number): void {
-    this.accountService.deleteCreditCardFromAccount(this.data['accountId'], creditCardId);
+    this.accountService.deleteCreditCardFromAccount(creditCardId);
     this.ngOnInit();
   }
 

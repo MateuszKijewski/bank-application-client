@@ -54,8 +54,19 @@ export class AuthService {
         this.localStorage.setItem('token', jwtToken)
     }
 
+    clearToken() {
+        this.localStorage.clear();
+    }
+
     getTokenFromStorage(): string | null {
         return this.localStorage.getItem('token');
+    }
+
+    getCurrentUser(): Observable<User> {
+        const url = `${this.baseLocalUrl}/auth/me`;
+        return this.http.get<User>(url, {
+            headers: this.getAuthorizedHttpHeaders()
+        })
     }
 
     async checkIfAuthorized() { 

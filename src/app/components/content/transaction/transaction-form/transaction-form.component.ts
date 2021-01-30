@@ -59,6 +59,7 @@ export class TransactionFormComponent implements OnInit {
       title: this.formTitle,
       transfer_date: this.getCorrectDate(this.formTransferDate)
     })
+    this.dialogRef.close();
   }
 
   mapAccountNumberToAccountId(accountNumber: string): number {

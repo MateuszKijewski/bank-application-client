@@ -1,0 +1,28 @@
+<mat-card class="container">
+    <mat-card-header>
+      <mat-card-title>User information</mat-card-title>
+      <mat-card-subtitle>Application user</mat-card-subtitle>
+    </mat-card-header>
+    <mat-progress-bar *ngIf='!currentUser' mode="indeterminate"></mat-progress-bar>
+    <mat-card-content *ngIf='currentUser'>
+        <div class="divider">
+            <h3>Personal info</h3>
+            <div>{{currentUser.firstName}} {{currentUser.lastName}}</div>
+            <div>{{currentUser.sex == 0 ? "Male" : "Female"}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="divider">
+            <h3>Contact</h3>
+            <div>{{currentUser.phone}}</div>
+            <div>{{currentUser.email}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="divider" *ngIf='currentUser.address'>
+            <h3>Address info</h3>
+            <div>{{currentUser.address.city}}</div>
+            <div>{{currentUser.address.post_code}}</div>
+            <div>{{currentUser.address.street_and_number}}</div>
+            <div>{{currentUser.address.country}}</div>
+        </div>
+    </mat-card-content>
+  </mat-card>

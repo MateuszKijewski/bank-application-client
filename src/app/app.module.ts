@@ -27,6 +27,7 @@ import { AccountCreditCardsFormComponent } from './components/content/account/ac
 import { TransactionViewComponent } from './components/content/transaction/transaction-view/transaction-view.component';
 import { TransactionListComponent } from './components/content/transaction/transaction-list/transaction-list.component';
 import { TransactionFormComponent } from './components/content/transaction/transaction-form/transaction-form.component';
+import { UserViewComponent } from './components/content/user/user-view/user-view.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { TransactionFormComponent } from './components/content/transaction/trans
     AccountCreditCardsFormComponent,
     TransactionViewComponent,
     TransactionListComponent,
-    TransactionFormComponent
+    TransactionFormComponent,
+    UserViewComponent
   ],
   imports: [
     BrowserModule,

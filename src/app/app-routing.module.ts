@@ -6,6 +6,7 @@ import { AccountViewComponent } from './components/content/account/account-view/
 import { DashboardComponent } from './components/content/dashboard/dashboard.component';
 import { NotfoundViewComponent } from './components/main/notfound-view/notfound-view.component';
 import { TransactionViewComponent } from './components/content/transaction/transaction-view/transaction-view.component';
+import { UserViewComponent } from './components/content/user/user-view/user-view.component';
 
 // export const routes: Routes = [
 //   { path: '', component: AppViewComponent },
@@ -20,7 +21,7 @@ const appRoutes: Routes = [
       path: '', 
       component: AppViewComponent,
       children: [
-        { path: '', component: DashboardComponent, pathMatch: 'full'},
+        { path: '', component: UserViewComponent, pathMatch: 'full'},
         { path: 'account', component: AccountViewComponent },
         { path: 'transaction', component: TransactionViewComponent }
       ]

@@ -88,8 +88,8 @@ export class AccountService {
         })
     }
 
-    deleteCreditCardFromAccount(accountId: number, creditCardNumber: number): void {
-        const url = `${this.baseLocalUrl}/accounts/${accountId}/creditCards/${creditCardNumber}`;
+    deleteCreditCardFromAccount(creditCardNumber: number): void {
+        const url = `${this.baseLocalUrl}/creditCards/${creditCardNumber}`;
         this.http.delete(url, {
             headers: this.authService.getAuthorizedHttpHeaders(),
             observe: 'response'

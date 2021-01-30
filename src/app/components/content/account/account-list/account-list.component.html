@@ -4,7 +4,8 @@
     </span>
 </mat-toolbar>
 <mat-divider></mat-divider>
-<mat-grid-list cols="3" rowHeight="2:1" >
+<mat-progress-bar *ngIf='!accounts' mode="indeterminate"></mat-progress-bar>
+<mat-grid-list *ngIf='accounts' cols="4" rowHeight="2:1" >
     <mat-grid-tile *ngFor="let account of accounts">
         <app-account-card [account]="account" (deleted)="deletedAccount($event)"></app-account-card>
     </mat-grid-tile>

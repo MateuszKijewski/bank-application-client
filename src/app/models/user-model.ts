@@ -3,8 +3,8 @@ import { Account } from "./account.model";
 
 export interface User {
     id: number | null,
-    first_name: string,
-    last_name: string,
+    firstName: string,
+    lastName: string,
     sex: number | null,
     phone: string,
     email: string,
